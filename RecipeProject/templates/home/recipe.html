@@ -17,6 +17,10 @@
 <img src="/media/photos/default.jpg" alt="default image">
 {% endif %}
 
+{% if user.id == recipe.recipe_owner.id %}
 
 <button><a href="{% url 'update_page' recipe.id %}">Update Recipe</a></button>
+
+{% endif %}
+
 {% endblock %}

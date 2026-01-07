@@ -13,6 +13,11 @@
         <h1>
             Recipe Project CRUD Operations
         </h1>
+        {% if user.is_authenticated %}
+        <button><a href="{% url 'logout_page' %}">Logout</a></button>
+        {% else %}
+        <button><a href="{% url 'login_page' %}">Login</a></button>
+        {% endif %}
         <hr>
     </header>
     <main>

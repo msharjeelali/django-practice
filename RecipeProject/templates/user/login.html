@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} Login Page {% endblock %}
+
+{% block content %}
+
+{{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}}
+
+<form method="POST">
+    {% csrf_token %}
+    <label>Enter Email or Username
+        <input type="text" name="user_name_email" id="name_email" required >
+    </label>
+    <label>Enter Password
+        <input type="password" name="user_password" id="user_password" required >
+    </label>
+    <button type="submit"> Login </button>
+
+</form>
+    
+<button><a href="{% url 'register_page' %}">Register Page</a></button>
+
+{% endblock %}
