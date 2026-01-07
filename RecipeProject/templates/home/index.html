@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %} Home Page {% endblock %}
+
+{% block content %}
+
+<button>
+    <a href="/create">+ Add New Recipe</a>
+</button>
+
+{% for recipe in recipes %}
+<a href="recipe/{{recipe.id}}">
+    <div>
+        <p>
+            {{recipe.recipe_name}}
+        </p>
+        <p>
+            {{recipe.recipe_description}}
+        </p>
+        {% if recipe.recipe_image %}
+        <img src="{{recipe.recipe_image.url}}" alt="{{recipe.recipe_name}}">
+        {% else %}
+        <img src="media/photos/default.jpg" alt="default image">
+        {% endif %}
+    </div>
+</a>
+
+{% endfor %}
+
+{% endblock %}

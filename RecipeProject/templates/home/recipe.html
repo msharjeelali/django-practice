@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %} Recipe Page {% endblock %}
+
+{% block content %}
+<h1>
+    {{recipe.recipe_name}}
+</h1>
+
+<p>
+    {{recipe.recipe_description}}
+</p>
+
+{% if recipe.recipe_image %}
+<img src="{{recipe.recipe_image.url}}" alt="{{recipe.recipe_name}}">
+{% else %}
+<img src="/media/photos/default.jpg" alt="default image">
+{% endif %}
+
+
+<button><a href="{% url 'update_page' recipe.id %}">Update Recipe</a></button>
+{% endblock %}

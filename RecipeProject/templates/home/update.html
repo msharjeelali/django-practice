@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} Update Recipe {% endblock %}
+
+{% block content %}
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label> Recipe Name
+        <input name="recipe_name" id="recipe_name" type="text" required value="{{recipe.recipe_name}}">
+    </label>
+
+    <label> Recipe Description
+        <textarea name="recipe_description" id="recipe_description">{{recipe.recipe_description}}</textarea>
+    </label>
+
+    {% if recipe.recipe_image %}
+    <img src="{{recipe.recipe_image.url}}" alt="{{recipe.recipe_name}}">
+    {% else %}
+    <img src="/media/photos/default.jpg" alt="default image">
+    {% endif %}
+    <label>Recipe Image
+        <input type="file" name="recipe_image" id="recipe_image">
+    </label>
+
+    <button type="submit">Update Recipe</button>
+</form>
+
+{% endblock %}
